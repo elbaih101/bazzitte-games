@@ -2,7 +2,7 @@
 
 steam override fix
 
-flatpak override --user --filesystem=/var/home/Megoto/.local/share/Steam com.github.Matoking.protontricks 
+flatpak override --user --filesystem=/var/home/user-Directory/.local/share/Steam com.github.Matoking.protontricks 
 
 https://www.onlyoffice.com/
 

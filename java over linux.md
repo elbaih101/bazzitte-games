@@ -1,11 +1,11 @@
 Step 1 – Install Java OpenJDK
 
 By default, Java OpenJDK is available in the Fedora default repo. You can search the list of all available Java versions using the following command.
-
+```bash
 dnf search openjdk
-
+```
 You should see the following output.
-
+```bash
 java-1.8.0-openjdk-openjfx-slowdebug.x86_64 : OpenJDK x OpenJFX connector for packages with debugging on and no optimisation. his package adds symliks finishing Java FX
                                             : integration to java-1.8.0-openjdk-slowdebug
 java-1.8.0-openjdk-slowdebug.x86_64 : OpenJDK 8 Runtime Environment unoptimised with full debugging on
@@ -28,39 +28,39 @@ openjdk-asmtools-javadoc.noarch : Javadoc for openjdk-asmtools
 openjdk-asmtools.noarch : To develop tools create proper & improper Java '.class' files
 ======================================================================= Summary Matched: openjdk =======================================================================
 icedtea-web.x86_64 : Additional Java components for OpenJDK - Java Web Start implementation
-
+```
 You can now install specific versions of Java OpenJDK to your system easily.
 
 For example, to install Java 11, run the following command.
-
+```bash
 dnf install java-11-openjdk -y
-
+```
 You can verify the Java version using the following command.
-
+```bash
 java --version
-
+```
 Output.
-
+```bash
 openjdk 11.0.15 2022-04-19
 OpenJDK Runtime Environment 18.9 (build 11.0.15+10)
 OpenJDK 64-Bit Server VM 18.9 (build 11.0.15+10, mixed mode, sharing)
-
+```
 If you want to install Java 8, run the following command.
-
+```bash
 dnf install java-1.8.0-openjdk.x86_64 -y
-
+```
 To install the latest Java version, run the following command.
-
+```bash
 dnf install java-latest-openjdk -y
-
+```
 Step 2 – Set Java Default Version
 
 Java allows you to switch between multiple Java versions easily. Run the following command to set a default Java version.
-
+```bash
 alternatives --config java
-
+```
 You will be asked to set the default Java version as shown below.
-
+```bash
 There are 3 programs which provide 'java'.
 
   Selection    Command
@@ -72,56 +72,57 @@ There are 3 programs which provide 'java'.
 Enter to keep the current selection[+], or type selection number: 3
 
 Type 3 and press the Enter key to set the Java latest version as the default version.
-
+```
 Now, verify the newly set Java version with the following command.
-
+```bash
 java --version
-
+```
 You will get the following.
-
+```bash
 openjdk 18.0.1 2022-04-19
 OpenJDK Runtime Environment 22.3 (build 18.0.1+10)
 OpenJDK 64-Bit Server VM 22.3 (build 18.0.1+10, mixed mode, sharing)
-
+```
 Step 3 – Install Oracle Java
 
 To install Oracle Java, login to the Oracle Java website and download Java 16 to your server.
 
 After downloading Java 16, copy it to the Java directory.
-
+```bash
 cp jdk-16.0.2_linux-x64_bin.tar.gz /usr/local/java
-
+```
 Next, navigate to the Java directory and extract the downloaded file.
-
+```bash
 cd /usr/local/java
 tar xvzf jdk-16.0.2_linux-x64_bin.tar.gz
-
+```
 Next, edit the profile file and define the location of Java 16.
-
+```bash
 nano /etc/profile
-
+```
 Add the following lines.
-
+```bash
 JAVA_HOME=/usr/local/java/jdk-16.0.2
 PATH=$PATH:$HOME/bin:$JAVA_HOME/bin
 export JAVA_HOME
 export PATH
-
+```
 Save and close the file, then reload the Java environment variable using the following command.
-
+```bash
 source /etc/profile
-
+```
 Next, set Oracle Java 16 as the default version with the following command.
-
+```bash
 update-alternatives --install "/usr/bin/java" "java" "/usr/local/java/jdk-16.0.2/bin/java" 1
 update-alternatives --set java /usr/local/java/jdk-16.0.2/bin/java
-
+```
 Now, check the Java version with the following command.
-
+```bash
 java --version
-
+```
 You should see the Java version in the following output.
-
+```bash
 java 16.0.2 2021-07-20
 Java(TM) SE Runtime Environment (build 16.0.2+7-67)
 Java HotSpot(TM) 64-Bit Server VM (build 16.0.2+7-67, mixed mode, sharing)
+```

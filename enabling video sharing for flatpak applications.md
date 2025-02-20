@@ -5,4 +5,4 @@ xdg-run/pipewire-0
 
 If not, add it and see if this fixes your issue.
 
-image
+![image](https://github.com/user-attachments/assets/14165188-bfa6-4a34-ba12-94b48d76e8f7)

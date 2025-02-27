@@ -16,10 +16,10 @@ podman network create n_jenkins
 
 ## 2. Setting Up the Jenkins Pod
 
-Create a new pod named `itcafe`:
+Create a new pod named `p_jenkins`:
 
 ```sh
-podman pod create itcafe
+podman pod create p_jenkins
 ```
 
 ## 3. Deploying the Jenkins Container
@@ -33,18 +33,16 @@ podman volume create jenkins_home
 Then, create the Jenkins container within the `itcafe` pod:
 
 ```sh
-podman create --pod itcafe --restart=on-failure \
-  -v jenkins_home:/var/jenkins_home \
-  --name jenkins --publish 8080:8080 \
-  --network n_jenkins \
-  --publish 50000:50000 \
-  docker.io/jenkins/jenkins:lts-jdk17
+podman create --pod p_jenkins --network n_jenkins \
+--restart=on-failure   -v jenkins_home:/var/jenkins_home   \
+--name jenkins --publish 8080:8080   --network n_jenkins   \
+--publish 50000:50000   docker.io/jenkins/jenkins
 ```
 
 Start the pod:
 
 ```sh
-podman pod start itcafe
+podman pod start p_jenkins
 ```
 
 ## 4. Initializing the Jenkins Controller
@@ -53,7 +51,7 @@ podman pod start itcafe
 - Retrieve the initial admin password:
 
   ```sh
-  podman exec jenkins \
+  podman exec -it jenkins \
     cat /var/jenkins_home/secrets/initialAdminPassword
   ```
 
@@ -70,13 +68,13 @@ To enhance scalability, add build agents:
 5. Run the inbound-agent container:
 
    ```sh
-   podman run --pod $podName \
-     --network $networkName\
-     -d --rm --name $containerName \
+   podman run --pod p_jenkins \
+     --network n_jenkins\
+     -d --rm --name agent1 \
      --init docker.io/jenkins/inbound-agent \
-     -url http://localhost:8080 \
+     -url http://jenkins:8080 \
      -secret <secret_code> \
-     -name $agentName
+     -name Agent1
    ```
 This command runs a **Jenkins inbound agent** inside the `itcafe` pod using **Podman**. Let's break it down step by step:  
 

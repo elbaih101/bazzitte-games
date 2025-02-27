@@ -70,12 +70,13 @@ To enhance scalability, add build agents:
 5. Run the inbound-agent container:
 
    ```sh
-   podman run --pod itcafe \
-     -d --rm --name agent1 \
+   podman run --pod $podName \
+     --network $networkName\
+     -d --rm --name $containerName \
      --init docker.io/jenkins/inbound-agent \
      -url http://localhost:8080 \
      -secret <secret_code> \
-     -name Agent1
+     -name $agentName
    ```
 This command runs a **Jenkins inbound agent** inside the `itcafe` pod using **Podman**. Let's break it down step by step:  
 

@@ -12,3 +12,9 @@ Run Vbox as Admin before
 
 
 https://docs.bazzite.gg/General/Installation_Guide/secure_boot/
+
+
+##to set the country to se for all .repo files to improve the download speed
+```sh
+sudo perl -pi -e 's|(metalink=[^\s&]+)(?!.&country=se)|$1&country=se|' /etc/yum.repos.d/*.repo
+```

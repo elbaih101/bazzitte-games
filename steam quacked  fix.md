@@ -12,8 +12,9 @@ This guide assumes basic knowledge of Linux,Steam and SteamTinkerLaunch.
    8. Start the game, when a popup appears(That’s the tinkerlaunch GUI) select “Main Menu”.
    9. In the “Main Menu” press “GAME MENU”
    10. Scroll down to the botton until you see “WINE DLL OVERRIDES”.
-   11. In the Text Box place the dll’s used by the fix in this manner ex: “OnlineFix64=n;SteamOverlay64=n;winmm=n,b;dnet=n;steam_api64=n” without quotes.
-   12. Press “Save and Play” and your game will boot up with the fix active.
+   11. In the Text Box place the dll’s used by the fix in this manner ex: “
+       ```OnlineFix64=n;SteamOverlay64=n;winmm=n,b;dnet=n;steam_api64=n``` without quotes.
+   13. Press “Save and Play” and your game will boot up with the fix active.
 
 ## BONUS RUNNING TRAINERS INSIDE A STEAMWORKS FIX:
 

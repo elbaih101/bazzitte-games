@@ -30,3 +30,17 @@ EDIT: It’s also be possible to skip steamtinkerlaunch and just use the options
 In STEAM launch options for the game but SteamTinker let’s us well…tinker alot more like running trainers and stuff.
 
 EDIT 2: IF THE GAME STILL TAKES YOU TO THE STORE OR REFUSES TO OPEN STEAMTINKERLAUNCH, PLEASE VERIFY THAT A FILE CALLED “steam_api.txt” IS NOT IN THE GAME’S FOLDER, IF IT IS REMOVE IT.
+
+
+## Method 2
+
+
+setting the launch options to the following 
+```
+
+WINEDLLOVERRIDES="OnlineFix64,winmm=n,b" %command%
+
+```
+![image](https://github.com/user-attachments/assets/05185096-c0fe-4c31-93a5-52f16999de4e)
+
+is set to that directory as well. If that doesn't work or if you were already doing that, then change the main folder to something simplier, to just "rooftops" for example. And if that doesn't work either then maybe re-download the game, maybe it is just broken

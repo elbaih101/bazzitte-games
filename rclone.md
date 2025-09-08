@@ -1,5 +1,6 @@
 # Complete rclone Google Drive Setup Guide
-
+## sources
+   - [rclone make your on google client id](https://rclone.org/drive/#making-your-own-client-id)
 This comprehensive guide covers everything from installing rclone to mounting Google Drive on Linux systems, with special considerations for immutable distributions like Bazzite.
 
 ## Table of Contents

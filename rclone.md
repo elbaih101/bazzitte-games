@@ -183,6 +183,42 @@ rclone mount gdrive: ~/mnt/gdrive --vfs-cache-mode writes
 ```bash
 rclone mount gdrive: ~/mnt/gdrive --vfs-cache-mode writes
 ```
+Perfect! The issue is that Homebrew's rclone is using its own `fusermount3` which doesn't have the proper permissions on Bazzite. Let's fix this:
+
+## Solution 1: Force rclone to use the system fusermount
+```bash
+export PATH="/usr/sbin:/usr/bin:$PATH"
+rclone mount l.ofwarhd: /home/elbaih/mnt/l.ofwarhd --vfs-cache-mode writes -v
+```
+
+## Solution 2: Create a permanent fix by modifying your PATH
+Add this to your `~/.bashrc` or `~/.zshrc`:
+```bash
+echo 'export PATH="/usr/sbin:/usr/bin:$PATH"' >> ~/.bashrc
+source ~/.bashrc
+```
+
+## Solution 3: Create a symlink (alternative approach)
+```bash
+mkdir -p ~/.local/bin
+ln -sf /usr/sbin/fusermount ~/.local/bin/fusermount3
+export PATH="$HOME/.local/bin:$PATH"
+```
+
+## Solution 4: Use the system's rclone instead
+Since Bazzite likely has rclone available:
+```bash
+rpm-ostree install rclone
+systemctl reboot
+```
+
+## Solution 5: Direct path specification
+You can also try specifying the fusermount path directly:
+```bash
+RCLONE_FUSERMOUNT=/usr/sbin/fusermount rclone mount l.ofwarhd: /home/elbaih/mnt/l.ofwarhd --vfs-cache-mode writes -v
+```
+
+Try Solution 1 first - it should work immediately. The Homebrew version of fusermount3 doesn't have the setuid permissions that the system version has, which is why you're getting "Operation not permitted."
 
 ### Step 3: Mount with Additional Options
 ```bash

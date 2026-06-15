@@ -25,7 +25,11 @@ This guide assumes basic knowledge of Linux,Steam and SteamTinkerLaunch.
 
 EDIT: It’s also be possible to skip steamtinkerlaunch and just use the options to launch the game as normal from Steam, but this aproach will not let you run trainers for your games!
 
-    ``WINEDLLOVERRIDES=“OnlineFix64=n;SteamOverlay64=n;winmm=n,b;dnet=n;steam_api64=n” %command%``
+    ``WINEDLLOVERRIDES=“OnlineFix64=n;SteamOverlay64=n;winmm=n,b;dnet=n;steam_api64=n” %command%
+
+    or
+    
+      WINEDLLOVERRIDES="OnlineFix64,SteamOverlay64,winmm,dnet,steam_api64=n,b" %command%``
 
 In STEAM launch options for the game but SteamTinker let’s us well…tinker alot more like running trainers and stuff.
 
